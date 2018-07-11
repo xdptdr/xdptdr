@@ -1,4 +1,4 @@
-package example.company.asn.elements;
+package xdptdr.asn.elements;
 
 import java.util.ArrayList;
 import java.util.List;

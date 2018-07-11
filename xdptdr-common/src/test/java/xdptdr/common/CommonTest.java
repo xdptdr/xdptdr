@@ -1,4 +1,4 @@
-package example.company.tox.common;
+package xdptdr.common;
 
 import java.math.BigInteger;
 

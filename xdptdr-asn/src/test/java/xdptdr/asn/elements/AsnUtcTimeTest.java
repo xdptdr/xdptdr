@@ -1,4 +1,4 @@
-package example.company.asn.elements;
+package xdptdr.asn.elements;
 
 import org.junit.Assert;
 import org.junit.Test;
