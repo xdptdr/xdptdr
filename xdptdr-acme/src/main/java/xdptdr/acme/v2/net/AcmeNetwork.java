@@ -1,4 +1,4 @@
-package xdptdr.acme.v2;
+package xdptdr.acme.v2.net;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -14,7 +14,8 @@ import org.apache.http.client.fluent.Request;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import xdptdr.acme.v2.account.AcmeError;
+import xdptdr.acme.v2.AcmeError;
+import xdptdr.acme.v2.AcmeSession;
 
 public class AcmeNetwork {
 

@@ -1,4 +1,4 @@
-package xdptdr.acme.v2;
+package xdptdr.acme.v2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;

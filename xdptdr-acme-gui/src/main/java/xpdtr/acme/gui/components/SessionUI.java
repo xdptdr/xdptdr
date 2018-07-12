@@ -9,12 +9,12 @@ import javax.swing.JComponent;
 import javax.swing.JPanel;
 import javax.swing.border.TitledBorder;
 
-import xdptdr.acme.v2.AcmeAuthorization;
-import xdptdr.acme.v2.AcmeChallenge;
-import xdptdr.acme.v2.AcmeDirectoryInfos2;
-import xdptdr.acme.v2.AcmeIdentifier;
-import xdptdr.acme.v2.AcmeOrder;
 import xdptdr.acme.v2.AcmeSession;
+import xdptdr.acme.v2.model.AcmeAuthorization;
+import xdptdr.acme.v2.model.AcmeChallenge;
+import xdptdr.acme.v2.model.AcmeDirectoryInfos2;
+import xdptdr.acme.v2.model.AcmeIdentifier;
+import xdptdr.acme.v2.model.AcmeOrder;
 import xpdtr.acme.gui.utils.U;
 
 public class SessionUI {

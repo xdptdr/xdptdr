@@ -10,8 +10,8 @@ import java.security.SignatureException;
 import javax.swing.JPanel;
 
 import xdptdr.acme.v2.Acme2;
-import xdptdr.acme.v2.AcmeResponse;
 import xdptdr.acme.v2.AcmeSession;
+import xdptdr.acme.v2.net.AcmeResponse;
 import xdptdr.asn.builders.CSRBuilder;
 import xdptdr.common.Common;
 import xpdtr.acme.gui.components.UILogger;

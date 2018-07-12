@@ -1,9 +1,12 @@
-package xdptdr.acme.v2;
+package xdptdr.acme.v2.requests;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import xdptdr.acme.jw.JWSBuilder;
+import xdptdr.acme.v2.AcmeSession;
+import xdptdr.acme.v2.net.AcmeNetwork;
+import xdptdr.acme.v2.net.AcmeResponse;
 
 public class AcmeAccountDetails {
 

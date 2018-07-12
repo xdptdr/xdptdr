@@ -1,4 +1,4 @@
-package xdptdr.acme.v2.account;
+package xdptdr.acme.v2;
 
 public class AcmeError {
 

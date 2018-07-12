@@ -3,11 +3,9 @@ package xpdtr.acme.gui.interactions;
 import javax.swing.JPanel;
 
 import xdptdr.acme.v2.Acme2;
-import xdptdr.acme.v2.AcmeResponse;
 import xdptdr.acme.v2.AcmeSession;
+import xdptdr.acme.v2.net.AcmeResponse;
 import xpdtr.acme.gui.components.UILogger;
-import xpdtr.acme.gui.interactions.Interacter;
-import xpdtr.acme.gui.interactions.UIInteraction;
 import xpdtr.acme.gui.utils.Promise;
 
 public class RespondToChallengeInteraction extends UIInteraction {

@@ -4,7 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import xdptdr.acme.jw.KeyPairWithJWK;
-import xdptdr.acme.v2.account.AcmeAccount;
+import xdptdr.acme.v2.model.AcmeAccount;
+import xdptdr.acme.v2.model.AcmeAuthorization;
+import xdptdr.acme.v2.model.AcmeChallenge;
+import xdptdr.acme.v2.model.AcmeDirectoryInfos2;
+import xdptdr.acme.v2.model.AcmeOrder;
 
 public class AcmeSession {
 

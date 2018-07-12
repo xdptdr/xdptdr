@@ -1,4 +1,4 @@
-package xdptdr.acme.v2;
+package xdptdr.acme.v2.net;
 
 public class AcmeResponse<T> {
 

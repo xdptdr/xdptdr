@@ -1,10 +1,7 @@
-package xdptdr.acme.v2;
+package xdptdr.acme.v2.model;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import xdptdr.acme.v2.AcmeChallenge;
-import xdptdr.acme.v2.AcmeIdentifier;
 
 public class AcmeAuthorization {
 

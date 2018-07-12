@@ -2,8 +2,19 @@ package xdptdr.acme.v2;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import xdptdr.acme.v2.account.AcmeAccount;
-import xdptdr.acme.v2.account.AcmeNewAccount;
+import xdptdr.acme.v2.model.AcmeAccount;
+import xdptdr.acme.v2.model.AcmeAuthorization;
+import xdptdr.acme.v2.model.AcmeChallenge;
+import xdptdr.acme.v2.model.AcmeDirectoryInfos2;
+import xdptdr.acme.v2.model.AcmeOrder;
+import xdptdr.acme.v2.net.AcmeNetwork;
+import xdptdr.acme.v2.net.AcmeResponse;
+import xdptdr.acme.v2.requests.AcmeAccountDetails;
+import xdptdr.acme.v2.requests.AcmeDeactivateAccount;
+import xdptdr.acme.v2.requests.AcmeFinalize;
+import xdptdr.acme.v2.requests.AcmeNewAccount;
+import xdptdr.acme.v2.requests.AcmeNewOrder;
+import xdptdr.acme.v2.requests.AcmeRespondToChallenge;
 
 public class Acme2 {
 
