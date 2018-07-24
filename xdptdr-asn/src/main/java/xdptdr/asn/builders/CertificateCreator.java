@@ -13,8 +13,8 @@ import xdptdr.asn.utils.X509CertificateUtils;
 
 public class CertificateCreator {
 
-	public static byte[] signCertificateWithAuthority(X509Certificate clientCertificate, X509Certificate caCertificate, int serialNumber,
-			Date notBefore, Date notAfter, PrivateKey caPrivateKey)
+	public static byte[] signCertificateWithAuthority(X509Certificate clientCertificate, X509Certificate caCertificate,
+			int serialNumber, Date notBefore, Date notAfter, PrivateKey caPrivateKey)
 			throws InvalidKeyException, NoSuchAlgorithmException, SignatureException {
 
 		PublicKey clientPublicKey = clientCertificate.getPublicKey();
@@ -28,10 +28,10 @@ public class CertificateCreator {
 		b.setNotAfter(notAfter);
 		b.setAuthorityKeyIdentifier(caSubjectKeyIdentifier);
 		b.setSubjectKeyIdentifier(clientSubjectKeyIdentifier);
-		b.setExtKeyUsage(OIDS.CLIENT_AUTH);
+		b.getExtKeyUsages().add(OIDS.CLIENT_AUTH);
 		b.setIssuerName(caCertificate.getSubjectDN().getName());
 		b.setSubjectName(clientCertificate.getSubjectDN().getName());
 		return b.encode(caPrivateKey);
 	}
-	
+
 }

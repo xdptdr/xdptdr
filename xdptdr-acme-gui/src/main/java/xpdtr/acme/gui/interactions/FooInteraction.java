@@ -82,7 +82,7 @@ public class FooInteraction extends UIInteraction {
 				b.setNotAfter(notAfter);
 				b.setAuthorityKeyIdentifier(caSubjectKeyIdentifier);
 				b.setSubjectKeyIdentifier(clientSubjectKeyIdentifier);
-				b.setExtKeyUsage(OIDS.CLIENT_AUTH);
+				b.getExtKeyUsages().add(OIDS.CLIENT_AUTH);
 				b.setIssuerName(issuerName);
 				b.setSubjectName(subjectName);
 				b.setAcmeExtension(digest);

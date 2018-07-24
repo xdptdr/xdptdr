@@ -8,6 +8,7 @@ public class OIDS {
 	public static final String RSA = "1.2.840.113549.1.1.1";
 	public static final String SHA256RSA = "1.2.840.113549.1.1.11";
 	public static final String EXTENSION_REQUEST = "1.2.840.113549.1.9.14";
+	public static final String SERVER_AUTH = "1.3.6.1.5.5.7.3.1";
 	public static final String CLIENT_AUTH = "1.3.6.1.5.5.7.3.2";
 
 	public static final String COMMON_NAME = "2.5.4.3";
@@ -39,6 +40,8 @@ public class OIDS {
 	public static final String ID_PE_ACME_IDENTIFIER_V1 = "1.3.6.1.5.5.7.1.30.1"; // as specified in TLS ALPN draft but conflicts in the SMI numbers registry 
 	public static final String SUBJECT_ALTERNATIVE_NAME = "2.5.29.17"; // as specified in TLS ALPN draft but conflicts in the SMI numbers registry 
 
+	 
+	
 	private static Map<String, String> oidLabels = new HashMap<>();
 	static {
 		oidLabels.put(SHA256RSA, "SHA256withRSA");
@@ -57,6 +60,7 @@ public class OIDS {
 		oidLabels.put(AUTHORITY_KEY_IDENTIFIER, "authorityKeyIdentifier");
 		oidLabels.put(EXT_KEY_USAGE, "extKeyUsage");
 		oidLabels.put(CLIENT_AUTH, "clientAuth");
+		oidLabels.put(SERVER_AUTH, "serverAuth");
 		oidLabels.put(HASH_ALGORITHM_IDENTIFIER, "hashAlgorithmIdentifier");
 		oidLabels.put(DATA, "data");
 		oidLabels.put(ENCRYPTED_DATA, "encryptedData");

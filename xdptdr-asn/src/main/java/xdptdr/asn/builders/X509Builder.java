@@ -5,7 +5,9 @@ import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.Signature;
 import java.security.SignatureException;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import xdptdr.asn.Asn;
 import xdptdr.asn.AsnEncoding;
@@ -32,7 +34,7 @@ public class X509Builder {
 	private String signatureOid = OIDS.SHA256RSA;
 
 	private byte[] authorityKeyIdentifier;
-	private String extKeyUsage;
+	private List<String> extKeyUsages = new ArrayList<>();
 	private byte[] subjectKeyIdentifier;
 
 	private byte[] acmeExtensionContent;
@@ -120,12 +122,8 @@ public class X509Builder {
 		this.authorityKeyIdentifier = authorityKeyIdentifier;
 	}
 
-	public String getExtKeyUsage() {
-		return extKeyUsage;
-	}
-
-	public void setExtKeyUsage(String extKeyUsage) {
-		this.extKeyUsage = extKeyUsage;
+	public List<String> getExtKeyUsages() {
+		return extKeyUsages;
 	}
 
 	public byte[] getSubjectKeyIdentifier() {
@@ -151,14 +149,6 @@ public class X509Builder {
 
 				Asn.seq(
 
-						Asn.oid(OIDS.EXT_KEY_USAGE),
-
-						Asn.os(Asn.seq(Asn.oid(extKeyUsage)))
-
-				),
-
-				Asn.seq(
-
 						Asn.oid(OIDS.SUBJECT_KEY_IDENTIFIER),
 
 						Asn.os(Asn.os(subjectKeyIdentifier))
@@ -166,6 +156,18 @@ public class X509Builder {
 				)
 
 		);
+
+		if (!extKeyUsages.isEmpty()) {
+
+			AsnSequence content = Asn.seq();
+
+			for (String extKeyUsage : extKeyUsages) {
+				content.getElements().add(Asn.oid(extKeyUsage));
+			}
+
+			extensions.getElements().add(Asn.seq(Asn.oid(OIDS.EXT_KEY_USAGE), Asn.os(content)));
+
+		}
 
 		if (acmeExtensionContent != null) {
 			extensions.getElements().add(
@@ -190,7 +192,7 @@ public class X509Builder {
 
 								Asn.oid(OIDS.SUBJECT_ALTERNATIVE_NAME),
 
-								Asn.os(Asn.seq(Asn.cs(2, Asn.ia5str(subjectAlternativeName)))
+								Asn.os(Asn.seq(Asn.cs(2, subjectAlternativeName.getBytes(), AsnEncoding.PRIMITIVE))
 
 								)
 
