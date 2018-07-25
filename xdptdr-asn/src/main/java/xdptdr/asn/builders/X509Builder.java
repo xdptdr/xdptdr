@@ -1,5 +1,6 @@
 package xdptdr.asn.builders;
 
+import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
@@ -23,7 +24,7 @@ public class X509Builder {
 
 	private int version = 3;
 
-	private int serial;
+	private BigInteger serial;
 
 	private String issuerName;
 	private String subjectName;
@@ -42,6 +43,9 @@ public class X509Builder {
 	private String subjectAlternativeType;
 	private String subjectAlternativeName;
 
+	private Boolean ca;
+	private Integer pathLenConstraint;
+
 	public byte[] getEncodedPublicKey() {
 		return encodedPublicKey;
 	}
@@ -58,11 +62,11 @@ public class X509Builder {
 		this.version = version;
 	}
 
-	public int getSerial() {
+	public BigInteger getSerial() {
 		return serial;
 	}
 
-	public void setSerial(int serial) {
+	public void setSerial(BigInteger serial) {
 		this.serial = serial;
 	}
 
@@ -137,25 +141,38 @@ public class X509Builder {
 	public byte[] encode(PrivateKey privateKey)
 			throws NoSuchAlgorithmException, InvalidKeyException, SignatureException {
 
-		AsnSequence extensions = Asn.seq(
+		AsnSequence extensions = Asn.seq();
 
-				Asn.seq(
+		if (authorityKeyIdentifier != null) {
+			extensions.getElements().add(Asn.seq(
 
-						Asn.oid(OIDS.AUTHORITY_KEY_IDENTIFIER),
+					Asn.oid(OIDS.AUTHORITY_KEY_IDENTIFIER),
 
-						Asn.os(Asn.seq(Asn.cs(0, authorityKeyIdentifier, AsnEncoding.PRIMITIVE)))
+					Asn.os(Asn.seq(Asn.cs(0, authorityKeyIdentifier, AsnEncoding.PRIMITIVE)))
 
-				),
+			));
+		}
 
-				Asn.seq(
+		if (subjectKeyIdentifier != null) {
+			extensions.getElements().add(Asn.seq(
 
-						Asn.oid(OIDS.SUBJECT_KEY_IDENTIFIER),
+					Asn.oid(OIDS.SUBJECT_KEY_IDENTIFIER),
 
-						Asn.os(Asn.os(subjectKeyIdentifier))
+					Asn.os(Asn.os(subjectKeyIdentifier))
 
-				)
+			));
+		}
 
-		);
+		if (ca != null || pathLenConstraint != null) {
+
+			AsnSequence seq = Asn.seq(Asn.bool(ca == null ? false : ca.booleanValue()));
+
+			if (pathLenConstraint != null) {
+				seq.getElements().add(Asn.integer(pathLenConstraint));
+			}
+
+			extensions.getElements().add(Asn.seq(Asn.oid(OIDS.BASIC_CONSTRAINTS), Asn.os(seq)));
+		}
 
 		if (!extKeyUsages.isEmpty()) {
 
@@ -249,6 +266,14 @@ public class X509Builder {
 		this.subjectAlternativeType = sanType;
 		this.subjectAlternativeName = sanContent;
 
+	}
+
+	public void setCA(boolean ca) {
+		this.ca = ca;
+	}
+
+	public void setPathLenConstraint(Integer pathLenConstraint) {
+		this.pathLenConstraint = pathLenConstraint;
 	}
 
 }

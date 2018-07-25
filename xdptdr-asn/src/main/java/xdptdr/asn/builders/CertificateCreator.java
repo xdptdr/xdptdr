@@ -1,5 +1,6 @@
 package xdptdr.asn.builders;
 
+import java.math.BigInteger;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
@@ -23,7 +24,7 @@ public class CertificateCreator {
 
 		X509Builder b = new X509Builder();
 		b.setEncodedPublicKey(clientPublicKey.getEncoded());
-		b.setSerial(serialNumber);
+		b.setSerial(BigInteger.valueOf(serialNumber));
 		b.setNotBefore(notBefore);
 		b.setNotAfter(notAfter);
 		b.setAuthorityKeyIdentifier(caSubjectKeyIdentifier);

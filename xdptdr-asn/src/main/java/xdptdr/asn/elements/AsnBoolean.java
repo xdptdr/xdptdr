@@ -32,7 +32,7 @@ public class AsnBoolean extends AsnElement {
 	public void encode(List<Byte> bytes) {
 		AsnUtils.addIdentifierBytes(bytes, AsnClass.UNIVERSAL, AsnEncoding.PRIMITIVE, AsnTag.BOOLEAN);
 		AsnUtils.addLengthBytes(bytes, 1);
-		AsnUtils.addBytes(bytes, new byte[] { (byte) (value ? 0 : 0xFF) });
+		AsnUtils.addBytes(bytes, new byte[] { (byte) (value ? 0xFF : 0) });
 	}
 
 }

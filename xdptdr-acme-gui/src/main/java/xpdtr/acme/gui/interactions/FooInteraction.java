@@ -3,6 +3,7 @@ package xpdtr.acme.gui.interactions;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.math.BigInteger;
 import java.nio.file.FileSystem;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
@@ -77,7 +78,7 @@ public class FooInteraction extends UIInteraction {
 
 				X509Builder b = new X509Builder();
 				b.setEncodedPublicKey(publicKey.getEncoded());
-				b.setSerial(serialNumber);
+				b.setSerial(BigInteger.valueOf(serialNumber));
 				b.setNotBefore(notBefore);
 				b.setNotAfter(notAfter);
 				b.setAuthorityKeyIdentifier(caSubjectKeyIdentifier);

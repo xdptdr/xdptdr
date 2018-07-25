@@ -122,11 +122,11 @@ public class Common {
 	public static BigInteger bigInteger(byte[] bytes) {
 		BigInteger bigInteger = BigInteger.ZERO;
 		for (int i = 0; i < bytes.length; ++i) {
-			bigInteger = bigInteger.shiftLeft(8).add(BigInteger.valueOf(bytes[i]&0xFF));
+			bigInteger = bigInteger.shiftLeft(8).add(BigInteger.valueOf(bytes[i] & 0xFF));
 		}
 		return bigInteger;
 	}
-	
+
 	public static byte[] bigIntegerToBytes(BigInteger big) {
 
 		List<Byte> rbytes = new ArrayList<>();
@@ -152,5 +152,14 @@ public class Common {
 			output[i - start] = input[i];
 		}
 		return output;
+	}
+
+	public static int integer(byte[] bytes) {
+		int i = 0;
+		for (byte b : bytes) {
+			i <<= 8;
+			i += (b & 0xFF);
+		}
+		return i;
 	}
 }
